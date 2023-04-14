@@ -25,26 +25,26 @@ def squareNMul(x: int, h: int, n: int):
         
 
 
-if os.name == "nt":
-    os.system('cls')
-else: os.system('clear')
+# if os.name == "nt":
+#     os.system('cls')
+# else: os.system('clear')
 
-print("-------------------------------------------\nWelcome to Square-and-Multiply Program: ")
-print("Type 'exit' at any prompt to end: ")
-while(1):
-    print("-------------------------------------------\nEnter in the format: x^H mod n: ")
-    x = input("-------------------------------------------\nEnter x value: ")
-    if(x=="exit"): break
-    h = input("Enter H value: ")
-    if(h=="exit"): break
-    n = input("Enter n value: ")
-    if(n=="exit"): break
+# print("-------------------------------------------\nWelcome to Square-and-Multiply Program: ")
+# print("Type 'exit' at any prompt to end: ")
+# while(1):
+#     print("-------------------------------------------\nEnter in the format: x^H mod n: ")
+#     x = input("-------------------------------------------\nEnter x value: ")
+#     if(x=="exit"): break
+#     h = input("Enter H value: ")
+#     if(h=="exit"): break
+#     n = input("Enter n value: ")
+#     if(n=="exit"): break
 
-    x = int(x)
-    h = int(h)
-    n = int(n)
+#     x = int(x)
+#     h = int(h)
+#     n = int(n)
     
-    ans = squareNMul(x,h,n)
-    print("\nAnswer is " + str(ans) + " mod " + str(n) + ": ")
+#     ans = squareNMul(x,h,n)
+#     print("\nAnswer is " + str(ans) + " mod " + str(n) + ": ")
     
     
