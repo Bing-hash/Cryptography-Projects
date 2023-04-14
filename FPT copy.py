@@ -2,10 +2,11 @@ from squaremult import squareNMul
 import random
 import os
 import math
+import threading
 
 def fermatPrimeTest(p: int):
     count = 0
-    for a in range(2,p-2):
+    for a in range(p-2,2, -1):
         if math.gcd(a,p) == 1:
             temp = squareNMul(a,p-1,p)
             if temp==1:
@@ -22,6 +23,19 @@ def prime(n):
             return True
     return False
 
+def Threader(p,lock):
+    primeTes = prime(p)
+    if primeTes == False: return
+    if len(temp) == 3:
+        return
+
+    count = fermatPrimeTest(p)
+    if count >> 0:
+        if count != p-4:
+            lock.acquire()
+            temp.append(p)
+            lock.release()
+
 if os.name == "nt":
     os.system('cls')
 else: os.system('clear')
@@ -31,15 +45,15 @@ while(1):
     test = input("Enter the less than number: ")
     test = int(test)
 
+    lock = threading.Lock()
+    threads = []
+
     for p in range(test, 1, -1):
-        primeTes = prime(p)
-        if primeTes == False: continue
-        if len(temp) == 3:
-            break
-        count = fermatPrimeTest(p)
-        if count >> 0:
-            if count != p-4:
-                temp.append(p)
+        t = threading.Thread(target=Threader, args=[p, lock])
+        t.start()
+        threads.append(t)
+    for thread in threads:
+        thread.join()
     print('Carmichael Numbers: ')
     print(temp)
 
